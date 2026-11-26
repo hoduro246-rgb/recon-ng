@@ -1,12 +1,670 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Recon-ng</title>
-  </head>
-  <body>
-    <h1>Recon-ng</h1>
-    <p>Open Source Intelligence gathering framework.</p>
-  </body>
+
+<head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+          <title>HENNY.CO | Gate Motor, Solar, CCTV, DSTV &amp; Satellite Installations</title>
+          <style>
+                    :root {
+                              --bg: #f6f8fb;
+                              --surface: #fff;
+                              --text: #0f1b2d;
+                              --muted: #5a6b82;
+                              --brand: #1769e0;
+                              --accent: #ffb400;
+                              --line: #e1e7ef;
+                              --dark: #0b1626;
+                              box-sizing: border-box;
+                              padding-top: env(safe-area-inset-top, 0px);
+                              padding-bottom: env(safe-area-inset-bottom, 0px)
+                    }
+
+                    @media (prefers-color-scheme:dark) {
+                              :root:not([data-theme="light"]) {
+                                        --bg: #0b1220;
+                                        --surface: #121c2e;
+                                        --text: #eaf0f8;
+                                        --muted: #9fb0c7;
+                                        --line: #1f2d45;
+                                        --dark: #060c17;
+                                        color-scheme: dark
+                              }
+                    }
+
+                    :root[data-theme="dark"] {
+                              --bg: #0b1220;
+                              --surface: #121c2e;
+                              --text: #eaf0f8;
+                              --muted: #9fb0c7;
+                              --line: #1f2d45;
+                              --dark: #060c17;
+                              color-scheme: dark
+                    }
+
+                    html {
+                              scroll-behavior: smooth;
+                              scroll-padding-top: env(safe-area-inset-top, 0px)
+                    }
+
+                    * {
+                              box-sizing: border-box
+                    }
+
+                    body {
+                              margin: 0;
+                              background: var(--bg);
+                              color: var(--text);
+                              font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+                              line-height: 1.6
+                    }
+
+                    a {
+                              color: inherit;
+                              text-decoration: none
+                    }
+
+                    .wrap {
+                              max-width: 1080px;
+                              margin: 0 auto;
+                              padding: 0 20px
+                    }
+
+                    header {
+                              position: sticky;
+                              top: env(safe-area-inset-top, 0px);
+                              z-index: 5;
+                              background: var(--surface);
+                              border-bottom: 1px solid var(--line)
+                    }
+
+                    .nav {
+                              display: flex;
+                              align-items: center;
+                              justify-content: space-between;
+                              height: 64px
+                    }
+
+                    .logo {
+                              font-weight: 800;
+                              font-size: 22px;
+                              letter-spacing: .5px
+                    }
+
+                    .logo span {
+                              color: var(--brand)
+                    }
+
+                    .nav a.link {
+                              margin-left: 22px;
+                              color: var(--muted);
+                              font-size: 15px
+                    }
+
+                    .btn {
+                              display: inline-block;
+                              background: var(--brand);
+                              color: #fff;
+                              padding: 12px 22px;
+                              border-radius: 10px;
+                              font-weight: 600;
+                              border: 0;
+                              cursor: pointer;
+                              font-size: 16px
+                    }
+
+                    .btn.alt {
+                              background: var(--accent);
+                              color: #1a1200
+                    }
+
+                    .hero {
+                              background: linear-gradient(135deg, #0b1626, #12418f);
+                              color: #fff;
+                              padding: 84px 0
+                    }
+
+                    .hero h1 {
+                              font-size: clamp(32px, 6vw, 56px);
+                              line-height: 1.1;
+                              margin: 0 0 16px;
+                              max-width: 680px
+                    }
+
+                    .hero p {
+                              font-size: 18px;
+                              max-width: 560px;
+                              opacity: .9;
+                              margin: 0 0 28px
+                    }
+
+                    .hero .btn+.btn {
+                              margin-left: 10px
+                    }
+
+                    section {
+                              padding: 64px 0
+                    }
+
+                    h2 {
+                              font-size: 30px;
+                              margin: 0 0 8px
+                    }
+
+                    .sub {
+                              color: var(--muted);
+                              margin: 0 0 32px
+                    }
+
+                    .grid {
+                              display: grid;
+                              grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                              gap: 18px
+                    }
+
+                    .card {
+                              background: var(--surface);
+                              border: 1px solid var(--line);
+                              border-radius: 14px;
+                              padding: 22px
+                    }
+
+                    .card .ic {
+                              font-size: 30px
+                    }
+
+                    .card h3 {
+                              margin: 10px 0 6px
+                    }
+
+                    .card p {
+                              margin: 0;
+                              color: var(--muted);
+                              font-size: 15px
+                    }
+
+                    .why {
+                              background: var(--surface);
+                              border-block: 1px solid var(--line)
+                    }
+
+                    .why li {
+                              margin-bottom: 8px
+                    }
+
+                    form {
+                              display: grid;
+                              gap: 12px;
+                              max-width: 520px
+                    }
+
+                    input,
+                    select,
+                    textarea {
+                              width: 100%;
+                              padding: 12px;
+                              border-radius: 10px;
+                              border: 1px solid var(--line);
+                              background: var(--surface);
+                              color: var(--text);
+                              font: inherit
+                    }
+
+                    #msg {
+                              color: var(--brand);
+                              font-weight: 600;
+                              min-height: 24px
+                    }
+
+                    footer {
+                              background: var(--dark);
+                              color: #9fb0c7;
+                              padding: 28px 0;
+                              font-size: 14px;
+                              text-align: center
+                    }
+
+                    .herogrid {
+                              display: grid;
+                              grid-template-columns: 1.2fr .8fr;
+                              gap: 32px;
+                              align-items: center
+                    }
+
+                    .logocard {
+                              background: #fff;
+                              border-radius: 20px;
+                              padding: 12px;
+                              box-shadow: 0 20px 50px rgba(0, 0, 0, .35)
+                    }
+
+                    .logocard svg {
+                              width: 100%;
+                              height: auto;
+                              display: block
+                    }
+
+                    .logocard {
+                              transition: transform .15s ease-out;
+                              will-change: transform
+                    }
+
+                    .logoin {
+                              position: relative
+                    }
+
+                    .hit {
+                              position: absolute;
+                              top: 78%;
+                              width: 10.5%;
+                              height: 10.24%;
+                              border-radius: 50%;
+                              border: 3px solid transparent;
+                              background: transparent;
+                              cursor: pointer;
+                              padding: 0;
+                              transition: transform .2s, border-color .2s
+                    }
+
+                    .hit:hover,
+                    .hit:focus-visible {
+                              border-color: var(--accent);
+                              transform: scale(1.12);
+                              outline: none
+                    }
+
+                    .hit::after {
+                              content: attr(data-tip);
+                              position: absolute;
+                              bottom: 115%;
+                              left: 50%;
+                              transform: translateX(-50%) scale(.9);
+                              background: #0B1F3A;
+                              color: #fff;
+                              font-size: 12px;
+                              padding: 4px 9px;
+                              border-radius: 6px;
+                              white-space: nowrap;
+                              opacity: 0;
+                              pointer-events: none;
+                              transition: .2s
+                    }
+
+                    .hit:hover::after,
+                    .hit:focus-visible::after {
+                              opacity: 1;
+                              transform: translateX(-50%) scale(1)
+                    }
+
+                    .hint {
+                              text-align: center;
+                              font-size: 12px;
+                              color: #5a6b82;
+                              margin: 4px 0 0
+                    }
+
+                    .gearhit {
+                              position: absolute;
+                              left: 26.9%;
+                              top: 7.9%;
+                              width: 46.25%;
+                              height: 45.1%;
+                              border-radius: 50%;
+                              border: 0;
+                              background: transparent;
+                              cursor: pointer;
+                              padding: 0
+                    }
+
+                    .gearhit:focus-visible {
+                              outline: 3px solid var(--accent)
+                    }
+
+                    .card.flash {
+                              animation: flash 1.6s ease
+                    }
+
+                    @keyframes flash {
+
+                              0%,
+                              60% {
+                                        box-shadow: 0 0 0 4px var(--accent);
+                                        transform: translateY(-6px)
+                              }
+
+                              100% {
+                                        box-shadow: none;
+                                        transform: none
+                              }
+                    }
+
+                    @media(prefers-reduced-motion:reduce) {
+                              .logocard {
+                                        transition: none
+                              }
+
+                              .card.flash {
+                                        animation: none;
+                                        outline: 3px solid var(--accent)
+                              }
+                    }
+
+                    .wafab {
+                              position: fixed;
+                              right: 18px;
+                              bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+                              z-index: 6;
+                              background: #25D366;
+                              color: #fff;
+                              font-weight: 700;
+                              padding: 13px 20px;
+                              border-radius: 999px;
+                              box-shadow: 0 8px 24px rgba(0, 0, 0, .3)
+                    }
+
+                    .contact a.card {
+                              display: block
+                    }
+
+                    .contact a.card b {
+                              display: block;
+                              margin-top: 4px;
+                              word-break: break-all
+                    }
+
+                    @media(max-width:760px) {
+                              .herogrid {
+                                        grid-template-columns: 1fr
+                              }
+
+                              .logocard {
+                                        max-width: 340px
+                              }
+                    }
+
+                    @media(max-width:640px) {
+                              .nav a.link {
+                                        display: none
+                              }
+                    }
+          </style>
+</head>
+
+<body>
+          <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+                    <defs>
+                              <symbol id="logo" viewBox="0 0 800 820">
+                                        <defs>
+                                                  <clipPath id="roof">
+                                                            <polygon points="332,254 400,188 468,254" />
+                                                  </clipPath>
+                                        </defs>
+                                        <g id="gearring">
+                                                  <circle cx="400" cy="250" r="190" fill="none" stroke="#1F4E9C"
+                                                            stroke-width="44" stroke-dasharray="37.3 37.3"
+                                                            stroke-dashoffset="18.65" />
+                                        </g>
+                                        <circle cx="400" cy="250" r="185" fill="#1F4E9C" />
+                                        <circle cx="400" cy="250" r="150" fill="#0B1F3A" />
+                                        <circle cx="400" cy="250" r="138" fill="none" stroke="#2F6FD0"
+                                                  stroke-width="3" />
+                                        <rect x="350" y="252" width="100" height="70" fill="#F4F7FB" />
+                                        <polygon points="332,254 400,188 468,254" fill="#2F6FD0" />
+                                        <g clip-path="url(#roof)">
+                                                  <line x1="360" y1="186" x2="360" y2="256" stroke="#F4F7FB"
+                                                            stroke-width="2" opacity="0.75" />
+                                                  <line x1="380" y1="186" x2="380" y2="256" stroke="#F4F7FB"
+                                                            stroke-width="2" opacity="0.75" />
+                                                  <line x1="400" y1="186" x2="400" y2="256" stroke="#F4F7FB"
+                                                            stroke-width="2" opacity="0.75" />
+                                                  <line x1="420" y1="186" x2="420" y2="256" stroke="#F4F7FB"
+                                                            stroke-width="2" opacity="0.75" />
+                                                  <line x1="440" y1="186" x2="440" y2="256" stroke="#F4F7FB"
+                                                            stroke-width="2" opacity="0.75" />
+                                                  <line x1="330" y1="212" x2="470" y2="212" stroke="#F4F7FB"
+                                                            stroke-width="2" opacity="0.75" />
+                                                  <line x1="330" y1="230" x2="470" y2="230" stroke="#F4F7FB"
+                                                            stroke-width="2" opacity="0.75" />
+                                        </g>
+                                        <polygon points="332,254 400,188 468,254" fill="none" stroke="#F4F7FB"
+                                                  stroke-width="5" stroke-linejoin="round" />
+                                        <rect x="388" y="282" width="24" height="40" rx="3" fill="#0B1F3A" />
+                                        <rect x="360" y="268" width="18" height="16" rx="2" fill="#2F6FD0" />
+                                        <rect x="422" y="268" width="18" height="16" rx="2" fill="#2F6FD0" />
+                                        <circle cx="400" cy="178" r="5" fill="#F4F7FB" />
+                                        <g fill="none" stroke="#F4F7FB" stroke-width="5" stroke-linecap="round">
+                                                  <path d="M384.4 162.4 A22 22 0 0 1 415.6 162.4">
+                                                            <animate attributeName="opacity" values="0.2;1;0.2"
+                                                                      dur="1.8s" begin="0s" repeatCount="indefinite" />
+                                                  </path>
+                                                  <path d="M373.1 151.1 A38 38 0 0 1 426.9 151.1">
+                                                            <animate attributeName="opacity" values="0.2;1;0.2"
+                                                                      dur="1.8s" begin="0.3s"
+                                                                      repeatCount="indefinite" />
+                                                  </path>
+                                                  <path d="M361.8 139.8 A54 54 0 0 1 438.2 139.8">
+                                                            <animate attributeName="opacity" values="0.2;1;0.2"
+                                                                      dur="1.8s" begin="0.6s"
+                                                                      repeatCount="indefinite" />
+                                                  </path>
+                                        </g><text x="400" y="545" text-anchor="middle"
+                                                  font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+                                                  font-weight="800" font-size="62" letter-spacing="10"
+                                                  fill="#0B1F3A">INSTALLATION</text>
+                                        <rect x="320" y="572" width="160" height="5" rx="2.5" fill="#1F4E9C" />
+                                        <circle cx="120" cy="682" r="42" fill="#0B1F3A" />
+                                        <circle cx="260" cy="682" r="42" fill="#0B1F3A" />
+                                        <circle cx="400" cy="682" r="42" fill="#0B1F3A" />
+                                        <circle cx="540" cy="682" r="42" fill="#0B1F3A" />
+                                        <circle cx="680" cy="682" r="42" fill="#0B1F3A" />
+                                        <polygon points="98,698 138,698 148,666 108,666" fill="#2F6FD0" stroke="#FFFFFF"
+                                                  stroke-width="2.5" stroke-linejoin="round" />
+                                        <line x1="103" y1="682" x2="143" y2="682" stroke="#FFFFFF" stroke-width="2" />
+                                        <line x1="123" y1="698" x2="128" y2="666" stroke="#FFFFFF" stroke-width="2" />
+                                        <rect x="238" y="662" width="44" height="30" rx="4" fill="none" stroke="#FFFFFF"
+                                                  stroke-width="3.5" />
+                                        <line x1="260" y1="692" x2="260" y2="700" stroke="#FFFFFF" stroke-width="3.5" />
+                                        <line x1="248" y1="701" x2="272" y2="701" stroke="#FFFFFF" stroke-width="3.5"
+                                                  stroke-linecap="round" />
+                                        <ellipse cx="396" cy="680" rx="12" ry="20" transform="rotate(-35 396 680)"
+                                                  fill="#FFFFFF" />
+                                        <line x1="396" y1="680" x2="414" y2="664" stroke="#FFFFFF" stroke-width="3" />
+                                        <circle cx="415" cy="663" r="3.5" fill="#FFFFFF" />
+                                        <line x1="398" y1="694" x2="398" y2="706" stroke="#FFFFFF" stroke-width="3.5" />
+                                        <rect x="534" y="664" width="30" height="22" rx="3" fill="#FFFFFF" />
+                                        <rect x="518" y="690" width="46" height="4" fill="#FFFFFF" />
+                                        <rect x="520" y="696" width="4" height="4" fill="#FFFFFF" />
+                                        <rect x="528" y="696" width="4" height="4" fill="#FFFFFF" />
+                                        <rect x="536" y="696" width="4" height="4" fill="#FFFFFF" />
+                                        <rect x="544" y="696" width="4" height="4" fill="#FFFFFF" />
+                                        <rect x="552" y="696" width="4" height="4" fill="#FFFFFF" />
+                                        <rect x="560" y="696" width="4" height="4" fill="#FFFFFF" />
+                                        <g transform="rotate(10 680 680)">
+                                                  <rect x="658" y="664" width="4" height="30" rx="2" fill="#FFFFFF" />
+                                                  <rect x="662" y="672" width="30" height="16" rx="4" fill="#FFFFFF" />
+                                                  <rect x="690" y="674" width="7" height="12" rx="2" fill="#2F6FD0" />
+                                        </g>
+                                        <g font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-weight="700"
+                                                  font-size="15" letter-spacing="1.5" fill="#0B1F3A"
+                                                  text-anchor="middle"><text x="120" y="752">SOLAR</text><text x="260"
+                                                            y="752">DSTV</text><text x="400"
+                                                            y="752">SATELLITE</text><text x="540" y="752">GATE
+                                                            MOTOR</text><text x="680" y="752">CCTV</text></g>
+                              </symbol>
+                    </defs>
+          </svg>
+          <header>
+                    <div class="wrap nav">
+                              <a class="logo" href="#" style="display:flex;align-items:center;gap:10px"><svg width="46"
+                                                  height="46" viewBox="185 35 430 430" role="img"
+                                                  aria-label="HENNY.CO logo">
+                                                  <use href="#logo" width="800" height="820" />
+                                        </svg><b>HENNY<span>.CO</span></b></a>
+                              <nav><a class="link" href="#services">Services</a><a class="link" href="#why">Why Us</a><a
+                                                  class="link" href="#quote">Get a Quote</a> <a class="btn"
+                                                  href="#quote"
+                                                  style="margin-left:18px;padding:9px 16px;font-size:14px">Free
+                                                  Quote</a></nav>
+                    </div>
+          </header>
+
+          <div class="hero">
+                    <div class="wrap herogrid">
+                              <div>
+                                        <h1>Professional installations for your home &amp; business</h1>
+                                        <p>Gate motors, solar, CCTV cameras, DSTV and satellite dishes, installed
+                                                  neatly, safely and on time by HENNY.CO.</p>
+                                        <p style="font-weight:700;color:#ffb400;margin-top:-12px">📍 Serving all parts
+                                                  of Ghana</p>
+                                        <a class="btn alt" href="#quote">Get a Free Quote</a><a class="btn"
+                                                  href="#services">Our Services</a>
+                              </div>
+                              <div class="logocard" id="lc">
+                                        <div class="logoin"><svg viewBox="0 0 800 820" role="img"
+                                                            aria-label="HENNY.CO logo">
+                                                            <use href="#logo" width="800" height="820" />
+                                                  </svg><button class="gearhit"
+                                                            aria-label="Spin the gear"></button><button class="hit"
+                                                            style="left:9.75%" data-svc="Solar" data-tip="Solar"
+                                                            aria-label="Go to Solar"></button><button class="hit"
+                                                            style="left:27.25%" data-svc="DSTV" data-tip="DSTV"
+                                                            aria-label="Go to DSTV"></button><button class="hit"
+                                                            style="left:44.75%" data-svc="Satellite"
+                                                            data-tip="Satellite"
+                                                            aria-label="Go to Satellite Dishes"></button><button
+                                                            class="hit" style="left:62.25%" data-svc="Gate Motor"
+                                                            data-tip="Gate Motor"
+                                                            aria-label="Go to Gate Motors"></button><button class="hit"
+                                                            style="left:79.75%" data-svc="CCTV" data-tip="CCTV"
+                                                            aria-label="Go to CCTV Cameras"></button></div>
+                                        <p class="hint">Click the gear to spin it. Tap an icon to pick that service.</p>
+                              </div>
+                    </div>
+          </div>
+
+          <section id="services">
+                    <div class="wrap">
+                              <h2>What we install</h2>
+                              <p class="sub">One trusted team for all your security, power and entertainment needs.</p>
+                              <div class="grid">
+                                        <div class="card">
+                                                  <div class="ic">🚪</div>
+                                                  <h3>Gate Motors</h3>
+                                                  <p>Sliding and swing gate motor installation, remotes and battery
+                                                            backup.</p>
+                                        </div>
+                                        <div class="card">
+                                                  <div class="ic">☀️</div>
+                                                  <h3>Solar</h3>
+                                                  <p>Solar panels, inverters and batteries to cut your bills and beat
+                                                            load shedding.</p>
+                                        </div>
+                                        <div class="card">
+                                                  <div class="ic">📹</div>
+                                                  <h3>CCTV Cameras</h3>
+                                                  <p>HD cameras with night vision and remote viewing on your phone.</p>
+                                        </div>
+                                        <div class="card">
+                                                  <div class="ic">📺</div>
+                                                  <h3>DSTV</h3>
+                                                  <p>Fast DSTV installation, extra views and decoder setup.</p>
+                                        </div>
+                                        <div class="card">
+                                                  <div class="ic">📡</div>
+                                                  <h3>Satellite Dishes</h3>
+                                                  <p>Dish supply, mounting and precise signal alignment.</p>
+                                        </div>
+                              </div>
+                    </div>
+          </section>
+
+          <section id="why" class="why">
+                    <div class="wrap">
+                              <h2>Why choose HENNY.CO</h2>
+                              <p class="sub">Quality work you can rely on.</p>
+                              <ul>
+                                        <li>✔ Neat, safe and professional workmanship</li>
+                                        <li>✔ Honest, upfront quotes with no hidden costs</li>
+                                        <li>✔ Quick response and on-time installations</li>
+                                        <li>✔ Support after the job is done</li>
+                                        <li>✔ We work in all parts of Ghana</li>
+                              </ul>
+                    </div>
+          </section>
+
+          <section id="contact" class="contact why">
+                    <div class="wrap">
+                              <h2>Contact us</h2>
+                              <p class="sub">Call, WhatsApp or email HENNY.CO anytime.</p>
+                              <div class="grid">
+                                        <a class="card" href="tel:+233579307919">
+                                                  <div class="ic">📞</div>
+                                                  <h3>Call us</h3>
+                                                  <p>Speak to us directly</p><b>0579307919</b>
+                                        </a>
+                                        <a class="card" href="https://wa.me/233579307919" target="_blank"
+                                                  rel="noopener">
+                                                  <div class="ic">💬</div>
+                                                  <h3>WhatsApp</h3>
+                                                  <p>Send us a message or photos of the job</p><b>0579307919</b>
+                                        </a>
+                                        <a class="card" href="mailto:hoduro24@gmail.com">
+                                                  <div class="ic">✉️</div>
+                                                  <h3>Email</h3>
+                                                  <p>Write to us any time</p><b>hoduro24@gmail.com</b>
+                                        </a>
+                              </div>
+                    </div>
+          </section>
+
+          <section id="quote">
+                    <div class="wrap">
+                              <h2>Request a free quote</h2>
+                              <p class="sub">Tell us what you need and we will get back to you.</p>
+                              <form id="f">
+                                        <input id="n" placeholder="Your name" required>
+                                        <input id="p" type="tel" placeholder="Phone number" required>
+                                        <select id="s">
+                                                  <option>Gate Motor</option>
+                                                  <option>Solar</option>
+                                                  <option>CCTV Camera</option>
+                                                  <option>DSTV</option>
+                                                  <option>Satellite Dish</option>
+                                        </select>
+                                        <textarea id="d" rows="4" placeholder="Tell us about your job"></textarea>
+                                        <button class="btn" type="submit">Send Request</button>
+                                        <div id="msg"></div>
+                              </form>
+                    </div>
+          </section>
+
+          <footer>
+                    <div class="wrap">
+                              <div>📍 Serving all parts of Ghana</div>
+                              <div>📞 <a href="tel:+233579307919">0579307919</a> &nbsp;·&nbsp; ✉️ <a
+                                                  href="mailto:hoduro24@gmail.com">hoduro24@gmail.com</a></div>
+                              <div>© <span id="y"></span> HENNY.CO. All rights reserved.</div>
+                    </div>
+          </footer>
+          <a class="wafab" href="https://wa.me/233579307919" target="_blank" rel="noopener"
+                    aria-label="Chat on WhatsApp">💬 WhatsApp</a>
+
+          <script>
+                    document.getElementById('y').textContent = new Date().getFullYear();
+                    document.getElementById('f').addEventListener('submit', function (e) {
+                              e.preventDefault();
+                              var nm = document.getElementById('n').value, ph = document.getElementById('p').value, sv = document.getElementById('s').value, dt = document.getElementById('d').value;
+                              var u = 'https://wa.me/233579307919?text=' + encodeURIComponent('Hello HENNY.CO, I need a quote for ' + sv + '.\nName: ' + nm + '\nPhone: ' + ph + (dt ? '\nDetails: ' + dt : ''));
+                              var m = document.getElementById('msg'); m.textContent = 'Thanks, ' + nm + '! Opening WhatsApp to send your request. '; var a = document.createElement('a'); a.href = u; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Tap here if it did not open.'; m.appendChild(a); window.open(u, '_blank');
+                              this.reset();
+                    });
+                    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) { document.querySelectorAll('svg').forEach(function (s) { if (s.pauseAnimations) s.pauseAnimations(); }); }
+                    var lc = document.getElementById('lc'), rm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    if (!rm) { lc.addEventListener('pointermove', function (e) { var r = lc.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; lc.style.transform = 'perspective(800px) rotateY(' + (x * 12) + 'deg) rotateX(' + (-y * 12) + 'deg)'; }); lc.addEventListener('pointerleave', function () { lc.style.transform = ''; }); }
+                    document.querySelectorAll('.hit').forEach(function (b) { b.addEventListener('click', function () { var k = b.getAttribute('data-svc').toLowerCase(), cards = document.querySelectorAll('#services .card'); cards.forEach(function (c) { c.classList.remove('flash'); }); var t = [].find.call(cards, function (c) { return c.querySelector('h3').textContent.toLowerCase().indexOf(k) === 0; }); var sel = document.getElementById('s'); for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].text.toLowerCase().indexOf(k) === 0) sel.selectedIndex = i; } if (t) { document.getElementById('services').scrollIntoView({ behavior: 'smooth' }); void t.offsetWidth; t.classList.add('flash'); } }); });
+                    var gr = document.getElementById('gearring'), ang = 0, boost = 0, last = 0;
+                    if (gr && !rm) { (function f(t) { var dt = last ? (t - last) / 1000 : 0; last = t; boost *= Math.pow(.25, dt); ang = (ang + (15 + boost) * dt) % 360; gr.setAttribute('transform', 'rotate(' + ang + ' 400 250)'); requestAnimationFrame(f); })(0); document.querySelector('.gearhit').addEventListener('click', function () { boost = Math.min(boost + 500, 1500); }); }
+          </script>
+</body>
+
 </html>
